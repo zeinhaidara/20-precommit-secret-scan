@@ -1,0 +1,7 @@
+# Use the reviewed commit SHA from this repository's pull request.
+repos:
+  - repo: https://github.com/zeinhaidara/20-precommit-secret-scan
+    rev: REPLACE_WITH_REVIEWED_COMMIT_SHA
+    hooks:
+      - id: secret-scan
+        args: [--baseline, .detect-secrets.baseline]
