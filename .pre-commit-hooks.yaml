@@ -1,0 +1,6 @@
+- id: secret-scan
+  name: secret scan
+  description: block commits that introduce hardcoded secrets
+  entry: detect-secrets-hook
+  language: python
+  pass_filenames: true
