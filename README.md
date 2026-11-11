@@ -1,4 +1,4 @@
-# precommit-secret-scan
+# Pre-commit secret scanner
 
 A Git pre-commit hook and CI check using Yelp's `detect-secrets` 1.5.0 to block hardcoded credentials. A small custom scanner remains as a separate CLI exercise with baseline and staged-index support. Neither scanner proves that a repository contains no secrets.
 
@@ -60,7 +60,7 @@ The custom scanner checks AWS key shapes, private-key headers, generic credentia
 
 Both scanners give the same decision for unchanged input and configuration. Custom baseline keys use path, rule, and line hash; moving a line within a file does not invalidate it. Repeating `--update-baseline` for unchanged files writes the same content.
 
-## Tests
+## Validation
 
 ```bash
 ruff check .
@@ -72,6 +72,6 @@ python cli.py scan.py baseline.py cli.py --baseline .secrets-baseline.json
 
 The suite covers detector and baseline behavior, error exit codes, index versus worktree contents, filenames with spaces, and staged renames. It installs the packaged hook into a temporary consumer repository, accepts a clean real commit, and rejects a partially staged secret while restoring the clean unstaged contents. No live cloud resource or real credential is used.
 
-## Known limits
+## Known limitations
 
 This is a heuristic guard, not a credential inventory or a replacement for revocation and server-side scanning. The custom scanner is a teaching implementation; the published hook uses detect-secrets. Tests cover local Git delivery, not organization-wide enforcement or every detector/provider.
