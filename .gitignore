@@ -1,4 +1,4 @@
-﻿.dev-context/
+.dev-context/
 .DS_Store
 *.swp
 __pycache__/
@@ -7,3 +7,5 @@ build/
 dist/
 *.egg-info/
 .ruff_cache/
+*.tfplan
+memory/
