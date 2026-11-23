@@ -2,6 +2,8 @@
 
 A Git pre-commit hook and CI check using Yelp's `detect-secrets` 1.5.0 to block hardcoded credentials. A small custom scanner remains as a separate CLI exercise with baseline and staged-index support. Neither scanner proves that a repository contains no secrets.
 
+Why it matters: a credential that reaches a commit has to be revoked and scrubbed from history, often after it has already been pushed. Stopping it before the commit is much cheaper.
+
 ## Architecture
 
 - `.pre-commit-hooks.yaml` exposes `secret-scan`, backed by the installed `detect-secrets-hook` executable. `pyproject.toml` packages the project and declares the scanner dependency so installation works in a consumer repository.
